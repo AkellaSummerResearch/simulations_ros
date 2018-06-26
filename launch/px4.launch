@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-    <!-- Posix SITL environment launch script -->
-    <!-- launches PX4 SITL, Gazebo environment, and spawns vehicle -->
     <!-- vehicle pose -->
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
@@ -23,10 +21,6 @@
     <arg name="respawn_gazebo" default="false"/>
     <!-- PX4 configs -->
     <arg name="interactive" default="true"/>
-    <!-- PX4 SITL -->
-  <!--   <arg unless="$(arg interactive)" name="px4_command_arg1" value="-d"/>
-    <arg     if="$(arg interactive)" name="px4_command_arg1" value=""/>
-    <node name="sitl" pkg="px4" type="px4" output="screen" args="$(find px4) $(arg rcS) $(arg px4_command_arg1)" required="true"/> -->
     <!-- Gazebo sim -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="gui" value="$(arg gui)"/>
@@ -36,8 +30,7 @@
         <arg name="paused" value="$(arg paused)"/>
         <arg name="respawn_gazebo" value="$(arg respawn_gazebo)"/>
     </include>
-    <!-- gazebo model -->
-    <!-- <node name="$(anon vehicle_spawn)" pkg="gazebo_ros" type="spawn_model" output="screen" args="-sdf -file $(arg sdf) -model $(arg vehicle) -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg R) -P $(arg P) -Y $(arg Y)"/> -->
+
      <!-- MAVROS configs -->
     <arg name="fcu_url" default="udp://:14540@localhost:14557"/>
     <arg name="respawn_mavros" default="false"/>
@@ -48,4 +41,7 @@
         <arg name="fcu_url" value="$(arg fcu_url)"/>
         <arg name="respawn_mavros" value="$(arg respawn_mavros)"/>
     </include>
+
+
+
 </launch>

@@ -130,3 +130,8 @@ after a few seconds the drone will initialize and you can command the drone to t
 ```
 commander takeoff
 ```
+
+to view camera
+```
+rosrun image_view image_view image:=/stereo/camera/left/image_raw
+```
