@@ -95,4 +95,38 @@ sudo apt install libprotobuf-dev protobuf-compiler
 cd ~/Firmware 
 make posix_sitl_default gazebo
 ```
+## 7. Add paths to .bashrc
 
+```
+export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:/home/lockheed/catkin_ws/src/simulations_ros/models
+source ~/Firmware/Tools/setup_gazebo.bash ~/Firmware ~/Firmware/build/posix_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/Firmware
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/Firmware/Tools/sitl_gazebo
+```
+source bashrc
+```
+source ~/.bashrc
+```
+
+## 8. Running Simulation
+
+move script to start px4 sitl 
+```
+cp ~/catkin_ws/src/simulations_ros/scripts/startsim.sh ~
+```
+
+In first terminal 
+```
+./startsim.sh
+```
+In another terminal
+
+```
+roslaunch simulations_ros px4.launch
+```
+
+after a few seconds the drone will initialize and you can command the drone to takeoff. In the px4 terminal run 
+
+```
+commander takeoff
+```
