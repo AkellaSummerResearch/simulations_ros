@@ -74,16 +74,105 @@
       </include>
     </model>
     <model name="iris">
+      <!-- <pose>-6 18 0 0 0 5.49619</pose> -->
+      <!-- <pose>4 4 0 0 0 2.35619</pose> -->
       <pose>0 0 0 0 0 1.57</pose>
       <include>
         <uri>model://iris</uri>
       </include>
 
 
+      <link name="stereo_camera_joint">
+     <pose>.1 0 0.1 0 0.523599 0</pose>
+     <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0</iyz>
+            <izz>0.001</izz>
+          </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.073000 0.276000 0.072000</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://kinect/meshes/kinect.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="camera" type="depth">
+        <update_rate>20</update_rate>
+        <camera>
+          <horizontal_fov>1.4</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <!-- <width>320</width>
+            <height>240</height> -->
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.05</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <plugin name="camera_plugin" filename="libgazebo_ros_openni_kinect.so">
+          <baseline>0.2</baseline>
+          <alwaysOn>true</alwaysOn>
+          <!-- Keep this zero, update_rate in the parent <sensor> tag
+            will control the frame rate. -->
+          <updateRate>0.0</updateRate>
+          <cameraName>camera_ir</cameraName>
+          <imageTopicName>/openni_camera_link/rgb/image_raw</imageTopicName>
+          <cameraInfoTopicName>/openni_camera_link/depth/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>/openni_camera_link/depth/image_raw</depthImageTopicName>
+          <depthImageInfoTopicName>/openni_camera_link/depth/camera_info</depthImageInfoTopicName>
+          <pointCloudTopicName>/openni_camera_link/depth/points</pointCloudTopicName>
+          <frameName>camera_link</frameName>
+          <pointCloudCutoff>0.05</pointCloudCutoff>
+          <distortionK1>0</distortionK1>
+          <distortionK2>0</distortionK2>
+          <distortionK3>0</distortionK3>
+          <distortionT1>0</distortionT1>
+          <distortionT2>0</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+      </sensor>
+    </link>
 
-       <link name='stereo_camera'>
-        <pose>.15 .035 0.070 0 0 0</pose>
-         <inertial>
+     <joint type="fixed" name="stereo_camera_joint">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>iris::base_link</parent>
+      <child>stereo_camera_joint</child>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <xyz>0 0 1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+      </axis>
+    </joint>
+
+
+      <!-- add new camera -->
+      <link name='camera5'>
+        <pose>.1 0 0.1 0 0.523599 0</pose>
+        <inertial>
           <pose>0 0 0 0 0 0</pose>
           <mass>0.1</mass>
           <inertia>
@@ -95,8 +184,7 @@
             <izz>0.001</izz>
           </inertia>
         </inertial>
-        <visual name='visual_left'>
-          <pose>0 0 0 0 1.57 0</pose>
+        <visual name='visual5'>
           <geometry>
             <cylinder>
               <radius>0.025</radius>
@@ -110,79 +198,53 @@
             </script>
           </material>
         </visual>
-        <visual name='visual_right'>
-          <pose>0 -0.07 0 0 1.57 0</pose>
-          <geometry>
-            <cylinder>
-              <radius>0.025</radius>
-              <length>0.025</length>
-            </cylinder>
-          </geometry>
-           <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-          </material>
-        </visual>
-        <sensor type="multicamera" name="stereo_camera">
-          <update_rate>30.0</update_rate>
-          <camera name="left">
-            <horizontal_fov>1.3962634</horizontal_fov>
+
+        <sensor name="camera5" type="camera">
+           <camera>
+            <horizontal_fov>1.047198</horizontal_fov>
             <image>
-              <width>800</width>
-              <height>800</height>
+              <width>640</width>
+            <height>480</height>
+              <!-- <width>320</width>
+              <height>240</height> -->
               <format>R8G8B8</format>
             </image>
             <clip>
-              <near>0.02</near>
-              <far>300</far>
+              <near>0.05</near>
+              <far>100</far>
             </clip>
-            <noise>
-              <type>gaussian</type>
-              <mean>0.0</mean>
-              <stddev>0.007</stddev>
-            </noise>
           </camera>
-          <camera name="right">
-            <pose>0 -0.07 0 0 0 0</pose>
-            <horizontal_fov>1.3962634</horizontal_fov>
-            <image>
-              <width>800</width>
-              <height>800</height>
-              <format>R8G8B8</format>
-            </image>
-            <clip>
-              <near>0.02</near>
-              <far>300</far>
-            </clip>
-            <noise>
-              <type>gaussian</type>
-              <mean>0.0</mean>
-              <stddev>0.007</stddev>
-            </noise>
-          </camera>
-          <plugin name="stereo_camera_controller" filename="libgazebo_ros_multicamera.so">
-            <alwaysOn>true</alwaysOn>
-            <updateRate>0.0</updateRate>
-            <cameraName>stereo</cameraName>
-            <imageTopicName>image_raw</imageTopicName>
-            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-            <frameName>camera_link</frameName>
-            <!--<rightFrameName>right_camera_optical_frame</rightFrameName>-->
-            <hackBaseline>0.07</hackBaseline>
-            <distortionK1>0.0</distortionK1>
-            <distortionK2>0.0</distortionK2>
-            <distortionK3>0.0</distortionK3>
-            <distortionT1>0.0</distortionT1>
-            <distortionT2>0.0</distortionT2>
-          </plugin>
+          <always_on>1</always_on>
+          <update_rate>10</update_rate>
+          <visualize>true</visualize>
+
+          <!--  <plugin name="irlock" filename="libArduCopterIRLockPlugin.so">
+              <fiducial>irlock_beacon_01</fiducial>
+          </plugin> -->
+          <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>webcam</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+      </plugin>
+
         </sensor>
-       </link>
-       <joint type="fixed" name="stereo_camera_joint">
+
+      </link>
+
+      <!-- attach camera -->
+      <joint type="fixed" name="base_camera_joint5">
         <pose>0 0 0.0 0 0 0</pose>
         <parent>iris::base_link</parent>
-        <child>stereo_camera</child>
+        <child>camera5</child>
         <axis>
           <limit>
             <lower>0</lower>
@@ -191,7 +253,7 @@
           <xyz>0 0 1</xyz>
           <use_parent_model_frame>true</use_parent_model_frame>
         </axis>
-      </joint>
+</joint>
 
     </model>
 
