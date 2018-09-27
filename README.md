@@ -89,7 +89,7 @@ sudo apt install ros-kinetic-gazebo-ros ros-kinetic-gazebo-plugins
 
 run ubuntu_sim_common_deps.sh
 ```
-cd ~/cd catkin_ws/src/simulations_ros/scripts/
+cd ~/catkin_ws/src/simulations_ros/scripts/
 ./ubuntu_sim_common_deps.sh
 sudo apt install libprotobuf-dev protobuf-compiler
 cd ~/Firmware 
