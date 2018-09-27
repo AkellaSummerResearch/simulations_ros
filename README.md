@@ -99,9 +99,9 @@ make posix_sitl_default gazebo
 
 ```
 export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/simulations_ros/models
-source ~/src/Firmware/Tools/setup_gazebo.bash ~/src/Firmware ~/src/Firmware/build/posix_sitl_default
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/src/Firmware
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/src/Firmware/Tools/sitl_gazebo
+source ~/src/Firmware/Tools/setup_gazebo.bash ~/src/Firmware ~/src/Firmware/build/posix_sitl_default
 ```
 source bashrc
 ```
