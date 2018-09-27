@@ -92,16 +92,16 @@ run ubuntu_sim_common_deps.sh
 cd ~/catkin_ws/src/simulations_ros/scripts/
 ./ubuntu_sim_common_deps.sh
 sudo apt install libprotobuf-dev protobuf-compiler
-cd ~/Firmware 
+cd ~/src/Firmware 
 make posix_sitl_default gazebo
 ```
 ## 7. Add paths to .bashrc
 
 ```
-export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:/home/lockheed/catkin_ws/src/simulations_ros/models
-source ~/Firmware/Tools/setup_gazebo.bash ~/Firmware ~/Firmware/build/posix_sitl_default
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/Firmware
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/Firmware/Tools/sitl_gazebo
+export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/simulations_ros/models
+source ~/src/Firmware/Tools/setup_gazebo.bash ~/src/Firmware ~/src/Firmware/build/posix_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/src/Firmware
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/src/Firmware/Tools/sitl_gazebo
 ```
 source bashrc
 ```
