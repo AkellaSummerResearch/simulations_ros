@@ -91,17 +91,17 @@ run ubuntu_sim_common_deps.sh
 ```
 cd ~/catkin_ws/src/simulations_ros/scripts/
 ./ubuntu_sim_common_deps.sh
-sudo apt install libprotobuf-dev protobuf-compiler
-cd ~/src/Firmware 
+sudo apt install libprotobuf-dev protobuf-compiler libignition-math2-dev
+cd ~/Firmware 
 make posix_sitl_default gazebo
 ```
 ## 7. Add paths to .bashrc
 
 ```
 export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/simulations_ros/models
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/src/Firmware
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/src/Firmware/Tools/sitl_gazebo
-source ~/src/Firmware/Tools/setup_gazebo.bash ~/src/Firmware ~/src/Firmware/build/posix_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/Firmware
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/Firmware/Tools/sitl_gazebo
+source ~/Firmware/Tools/setup_gazebo.bash ~/Firmware ~/Firmware/build/posix_sitl_default
 ```
 source bashrc
 ```
@@ -125,7 +125,18 @@ In another terminal
 roslaunch simulations_ros px4.launch
 ```
 
-after a few seconds the drone will initialize and you can command the drone to takeoff. In the px4 terminal run 
+after a few seconds the drone will initialize and you can command the drone to takeoff. In the px4 terminal run
+
+if the previos command fails with
+```
+[FATAL] [1538090263.500882984]: UAS: GeographicLib exception: File not readable /usr/share/GeographicLib/geoids/egm96-5.pgm | Run install_geographiclib_dataset.sh script in order to install Geoid Model dataset!
+```
+
+run 
+```
+cd catkin_ws/src/mavros/mavros/scripts/
+./install_geographiclib_datasets.sh
+``` 
 
 ```
 commander takeoff
