@@ -83,6 +83,10 @@ Install ROS plugins:
 sudo apt install ros-kinetic-gazebo-ros ros-kinetic-gazebo-plugins
 ```
 
+Give permissions to your uses:
+```
+sudo chown $USER .gazebo/
+```
 
 
 ## 6. Install Px4 
