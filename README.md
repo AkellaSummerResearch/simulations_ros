@@ -158,8 +158,10 @@ In the terminal that is running px4, run the following:
 ```
 param set EKF2_GPS_P_NOISE 0.01
 param set EKF2_GPS_V_NOISE 0.01
-param set EKF2_HGT_MODE 1
+param set EKF2_BARO_NOISE 0.01
 param set EKF2_GPS_DELAY 0
+param set EKF2_TAU_POS 0.1
+param set EKF2_TAU_VEL 0.1
 ```
 
 PX4 should save these parameters. The next time you run PX4, the parameters should be set to the ones above. To make sure they are right, run the following in PX4's terminal:
@@ -167,6 +169,8 @@ PX4 should save these parameters. The next time you run PX4, the parameters shou
 ```
 param show EKF2_GPS_P_NOISE
 param show EKF2_GPS_V_NOISE
-param show EKF2_HGT_MODE
+param show EKF2_BARO_NOISE
 param show EKF2_GPS_DELAY
+param show EKF2_TAU_POS
+param show EKF2_TAU_VEL
 ```
