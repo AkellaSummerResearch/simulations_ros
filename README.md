@@ -129,9 +129,8 @@ In another terminal
 roslaunch simulations_ros px4.launch
 ```
 
-after a few seconds the drone will initialize and you can command the drone to takeoff. In the px4 terminal run
+If the previous command fails with
 
-if the previos command fails with
 ```
 [FATAL] [1538090263.500882984]: UAS: GeographicLib exception: File not readable /usr/share/GeographicLib/geoids/egm96-5.pgm | Run install_geographiclib_dataset.sh script in order to install Geoid Model dataset!
 ```
@@ -141,6 +140,8 @@ run
 cd catkin_ws/src/mavros/mavros/scripts/
 ./install_geographiclib_datasets.sh
 ``` 
+
+after a few seconds the drone will initialize and you can command the drone to takeoff. In the px4 terminal run:
 
 ```
 commander takeoff
