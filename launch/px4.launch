@@ -42,6 +42,28 @@
         <arg name="respawn_mavros" value="$(arg respawn_mavros)"/>
     </include>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Arguments for rotating camera frame -->
+    <arg name="pi/2" value="1.5707963267948966" />
+    <arg name="angle" value="2.0944" />
+    <arg name="optical_rotate" value="0 0 0.1. -$(arg pi/2) 0 -$(arg angle)" />
+    
+    <node pkg="tf" type="static_transform_publisher" name="camera_link"
+        args="$(arg optical_rotate) base_link camera_link 100" />  
+    
+    <!-- Rotate the camera frame. -->
+    <node pkg="tf" type="static_transform_publisher" name="openni_camera_link"
+        args="$(arg optical_rotate) base_link openni_camera_link 100" />  
+
+    <node pkg="tf" type="static_transform_publisher" name="realsense"
+        args="0 0 3 -$(arg pi/2) 0 -$(arg pi/2) map camera_color_optical_frame 100" />  
+    
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Tf server for updating vehicles tf's -->
+    <node pkg="tf_publisher" type="tf_publisher" name="tf_publisher" output="screen" />
+
+    <!-- <rosparam param="QuadList"> ["valkyrie", "phoenix"] </rosparam> -->
 
 
 </launch>
