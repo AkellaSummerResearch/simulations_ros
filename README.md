@@ -40,11 +40,12 @@ rosdep install --from-paths src --ignore-src --rosdistro `echo $ROS_DISTRO` -y
 catkin build
 ```
 
-## 4. Clone our ROS package repository 
+## 4. Clone our ROS package repositories
 
 ```
 cd ~/catkin_ws/src 
 git clone https://github.com/AkellaSummerResearch/simulations_ros.git
+git clone https://github.com/AkellaSummerResearch/tf_publisher
 ```
 
 ## 5. Build instructions 
