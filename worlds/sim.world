@@ -111,7 +111,7 @@
         </geometry>
       </visual>
       <sensor name="camera" type="depth">
-        <update_rate>20</update_rate>
+        <update_rate>10</update_rate>
         <camera>
           <horizontal_fov>1.4</horizontal_fov>
           <image>
