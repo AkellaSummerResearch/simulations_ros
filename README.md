@@ -40,11 +40,12 @@ rosdep install --from-paths src --ignore-src --rosdistro `echo $ROS_DISTRO` -y
 catkin build
 ```
 
-## 4. Clone our ROS package repository 
+## 4. Clone our ROS package repositories
 
 ```
 cd ~/catkin_ws/src 
 git clone https://github.com/AkellaSummerResearch/simulations_ros.git
+git clone https://github.com/AkellaSummerResearch/tf_publisher
 ```
 
 ## 5. Build instructions 
@@ -129,9 +130,8 @@ In another terminal
 roslaunch simulations_ros px4.launch
 ```
 
-after a few seconds the drone will initialize and you can command the drone to takeoff. In the px4 terminal run
+If the previous command fails with
 
-if the previos command fails with
 ```
 [FATAL] [1538090263.500882984]: UAS: GeographicLib exception: File not readable /usr/share/GeographicLib/geoids/egm96-5.pgm | Run install_geographiclib_dataset.sh script in order to install Geoid Model dataset!
 ```
@@ -141,6 +141,8 @@ run
 cd catkin_ws/src/mavros/mavros/scripts/
 ./install_geographiclib_datasets.sh
 ``` 
+
+after a few seconds the drone will initialize and you can command the drone to takeoff. In the px4 terminal run:
 
 ```
 commander takeoff
