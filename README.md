@@ -22,22 +22,18 @@ Then, initialize the catkin workspace:
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
 catkin init
+catkin config --extend /opt/ros/kinetic
+catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
+catkin config --merge-devel
 ```
 
-## 3. Dependencies installation 
+## 3. Dependencies installation (catkin_make)
 
-Install `mavros` and `mavlink` from source: 
 ```
-cd ~/catkin_ws
-wstool init ~/catkin_ws/src
-
-rosinstall_generator --upstream mavros | tee /tmp/mavros.rosinstall
-rosinstall_generator mavlink | tee -a /tmp/mavros.rosinstall
-wstool merge -t src /tmp/mavros.rosinstall
-wstool update -t src
-rosdep install --from-paths src --ignore-src --rosdistro `echo $ROS_DISTRO` -y
-
-catkin build
+sudo apt-get install ros-kinetic-mavlink
+cd ~/catkin_ws/src
+git clone https://github.com/mavlink/mavros.git
+git clone https://github.com/AkellaSummerResearch/tf_publisher
 ```
 
 ## 4. Clone our ROS package repositories
@@ -45,15 +41,14 @@ catkin build
 ```
 cd ~/catkin_ws/src 
 git clone https://github.com/AkellaSummerResearch/simulations_ros.git
-git clone https://github.com/AkellaSummerResearch/tf_publisher
 ```
 
-## 5. Build instructions 
-   Inside `catkin_ws`, run `catkin build`
+## 5. Make instructions 
+   Inside `catkin_ws`, run `catkin_make`
 
 ```
 cd ~/catkin_ws 
-catkin build 
+catkin_make 
 ```
 
 
