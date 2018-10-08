@@ -143,7 +143,7 @@ after a few seconds the drone will initialize and you can command the drone to t
 commander takeoff
 ```
 
-to view camera
+The camera window will pop up. If you close it and want to reopen, type:
 ```
 rosrun image_view image_view image:=/stereo/camera/left/image_raw
 ```
