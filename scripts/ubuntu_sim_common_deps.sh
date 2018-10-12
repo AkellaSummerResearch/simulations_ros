@@ -62,3 +62,5 @@ echo "Cloning PX4 to: $clone_dir."
 mkdir -p $clone_dir
 cd $clone_dir
 git clone https://github.com/PX4/Firmware.git
+# cd $clone_dir/Firmware
+# git checkout v1.7.0

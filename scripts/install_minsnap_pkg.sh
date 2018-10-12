@@ -5,6 +5,7 @@ git clone https://github.com/AkellaSummerResearch/nlopt.git
 git clone https://github.com/AkellaSummerResearch/mav_comm.git
 git clone https://github.com/AkellaSummerResearch/catkin_simple.git
 git clone https://github.com/AkellaSummerResearch/eigen_catkin.git
+git clone https://github.com/radionavlab/mg_msgs.git
 eval cd $CATKIN_PATH
 catkin_make
 
