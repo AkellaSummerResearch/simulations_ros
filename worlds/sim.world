@@ -133,12 +133,12 @@
             will control the frame rate. -->
           <updateRate>0.0</updateRate>
           <cameraName>camera_ir</cameraName>
-          <imageTopicName>/openni_camera_link/rgb/image_raw</imageTopicName>
-          <cameraInfoTopicName>/openni_camera_link/depth/camera_info</cameraInfoTopicName>
-          <depthImageTopicName>/openni_camera_link/depth/image_raw</depthImageTopicName>
-          <depthImageInfoTopicName>/openni_camera_link/depth/camera_info</depthImageInfoTopicName>
-          <pointCloudTopicName>/openni_camera_link/depth/points</pointCloudTopicName>
-          <frameName>camera_link</frameName>
+          <imageTopicName>/Gazebo/openni_camera_link/rgb/image_raw</imageTopicName>
+          <cameraInfoTopicName>/Gazebo/openni_camera_link/depth/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>/Gazebo/openni_camera_link/depth/image_raw</depthImageTopicName>
+          <depthImageInfoTopicName>/Gazebo/openni_camera_link/depth/camera_info</depthImageInfoTopicName>
+          <pointCloudTopicName>/Gazebo/openni_camera_link/depth/points</pointCloudTopicName>
+          <frameName>/Gazebo/camera_link</frameName>
           <pointCloudCutoff>0.05</pointCloudCutoff>
           <distortionK1>0</distortionK1>
           <distortionK2>0</distortionK2>
