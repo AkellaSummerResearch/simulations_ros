@@ -31,6 +31,7 @@ catkin config --merge-devel
 
 ```
 sudo apt-get install ros-kinetic-mavlink
+sudo apt-get install ros-kinetic-geographic-msgs
 cd ~/catkin_ws/src
 git clone https://github.com/mavlink/mavros.git
 git clone https://github.com/AkellaSummerResearch/tf_publisher
