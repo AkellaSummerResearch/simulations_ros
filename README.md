@@ -33,6 +33,7 @@ catkin config --merge-devel
 sudo apt-get install ros-kinetic-mavlink
 sudo apt-get install ros-kinetic-geographic-msgs
 sudo apt-get install ros-kinetic-move-base-msgs
+sudo apt-get install ros-kinetic-control-toolbox
 cd ~/catkin_ws/src
 git clone https://github.com/mavlink/mavros.git
 git clone https://github.com/AkellaSummerResearch/tf_publisher
