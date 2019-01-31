@@ -82,7 +82,7 @@ Install ROS plugins:
 sudo apt install ros-kinetic-gazebo-ros ros-kinetic-gazebo-plugins
 ```
 
-Give permissions to your uses:
+Give permissions to your users:
 ```
 sudo chown $USER .gazebo/
 ```
@@ -146,7 +146,7 @@ after a few seconds the drone will initialize and you can command the drone to t
 commander takeoff
 ```
 
-The camera window will pop up. If you close it and want to reopen, type:
+If you want to see the quad's camera, type:
 ```
 rosrun image_view image_view image:=/stereo/camera/left/image_raw
 ```
